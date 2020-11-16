@@ -1,0 +1,23 @@
+{%extends 'base.html' %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-4">
+            <img src="{{product.image.url}}" width="100%">
+        </div>
+        <div class="col">
+            <h1 class="display-6">{{product.book_name}}</h1>
+            <p><span class="badge badge-secondary">Price</span>{{product.book_price}} 원</p>
+            <h5><span class="badge badge-secondary">book number</span>{{product.book_num}}</h5>
+        
+            <form action="" method="post">
+                {% csrf_token %}
+                <input type="submit" class="btn btn-primarybtn-sm" value="Add to Cart">
+            </form>
+            
+        </div>
+    </div>
+{% endblock %}
