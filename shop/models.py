@@ -2,7 +2,7 @@ from django.db import models
 from django.urls import reverse
 # Create your models here.
 class Product(models.Model):
-    book_num = models.IntegerField(unique=True,db_index=True)
+    book_num = models.IntegerField(unique=True,db_index=True,primary_key=True)
     book_name = models.CharField(max_length=30,db_index=True)
     book_stock = models.IntegerField()
     book_price = models.DecimalField(max_digits=10, decimal_places=2) # max_digits, decimal_place 달러(등 해외단위) 단위를 위함.

@@ -79,15 +79,19 @@ WSGI_APPLICATION = 'dbprj_book.wsgi.application'
 pymysql.version_info = (1,4,2,"final",0)
 pymysql.install_as_MySQLdb()
 
+from .secret_keys import *
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'HOST' : 'dbterm.cij5ghvum37f.ap-northeast-2.rds.amazonaws.com',
         'NAME': 'dbterm',
-        'USER' : 'kyc',
-        'PASSWORD' : 'asd123123',
+        'USER' : USER_ID,
+        'PASSWORD' : PASSWORD,
         'PORT' : '3306' ,
-
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        },
         
     }
 }
@@ -129,7 +133,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-from .secret_keys import *
 
 AWS_ACCESS_KEY_ID = MY_ACCESS_KEY_ID
 AWS_SECRET_ACCESS_KEY = MY_SECRET_ACCESS_KEY

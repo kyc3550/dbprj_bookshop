@@ -7,7 +7,9 @@
         <div class="col-md-8 panel panel-default">
             <div class="alert alert-info">다음을 입력하세요</div>
             <form action="" method="post">
-                {{form.as_p}}
+                {{user_form.as_p}}
+                {{address_form.as_p}}
+                {{card_form.as_p}}
                 {% csrf_token %}
                 <input class="btn btn-primary" type="submit" value="회원가입">
             </form>
