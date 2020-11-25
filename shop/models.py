@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 # Create your models here.
 class Product(models.Model):
+    objects = models.Manager()
     book_num = models.IntegerField(unique=True,db_index=True,primary_key=True)
     book_name = models.CharField(max_length=30,db_index=True)
     book_stock = models.IntegerField()
