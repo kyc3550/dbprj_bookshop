@@ -62,13 +62,15 @@
                                             <i class="fas fa-plus-circle" style='color:darkgray'></i></a>&nbsp;
                                         <a href="{% url 'cart:cart_remove' cart_item.product.book_num %}">
                                             <i class="fas fa-minus-circle" style='color:darkgray'></i></a>&nbsp;
-                                        <a href=""><i class="fas fa-trash" style='color:darkgray'></i></a>
+                                        <a href="{% url 'cart:full_remove' cart_item.product.book_num %}">
+                                            <i class="fas fa-trash" style='color:darkgray'></i></a>
                                     </td>
                                 {% else %}
                                     <td>
                                         &nbsp;<a href="{% url 'cart:cart_remove' cart_item.product.book_num %}">
                                             <i class="fas fa-minus-circle" style='color:darkgray'></i></a>&nbsp;
-                                        <a href=""><i class="fas fa-trash" style='color:darkgray'></i></a>
+                                        <a href="{% url 'cart:full_remove' cart_item.product.book_num %}">
+                                            <i class="fas fa-trash" style='color:darkgray'></i></a>
                                     </td>
                                     <td></td>
                                 {% endif %}

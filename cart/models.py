@@ -8,7 +8,6 @@ class Cart(models.Model):
     objects = models.Manager()
     cart_id = models.CharField(max_length=250,primary_key=True)
     date_added = models.DateField(auto_now_add=True)
-    #user = models.ForeignKey(User,on_delete=models.CASCADE)
     class Meta:
         db_table = 'Cart'
         ordering = ['date_added']

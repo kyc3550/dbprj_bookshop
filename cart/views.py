@@ -16,6 +16,7 @@ def add_cart(request,product_book_num):
         cart = Cart.objects.get(cart_id=_cart_id(request))
     except Cart.DoesNotExist:
         cart = Cart.objects.create(
+
             cart_id = _cart_id(request)
         )
         cart.save()
@@ -55,4 +56,11 @@ def cart_remove(request, product_book_num):
         cart_item.save()
     else:
         cart_item.delete()
+    return redirect('cart:cart_detail')
+
+def full_remove(request, product_book_num):
+    cart = Cart.objects.get(cart_id=_cart_id(request))
+    product = get_object_or_404(Product, book_num=product_book_num)
+    cart_item = CartItem.objects.get(product=product,cart=cart)
+    cart_item.delete()
     return redirect('cart:cart_detail')
