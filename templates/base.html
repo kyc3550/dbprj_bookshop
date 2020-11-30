@@ -31,14 +31,12 @@
         <a class="nav-link" href="#">Product</a>
       </li>
       {% if user.is_authenticated %}
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'cart:cart_detail' %}">Cart</a>
-            {% if cart|length > 0 %}
-              ${{cart.get_total_price}}with{{cart|length}} items
-            {% else %}
-              : Empty
-            {% endif %}
-      </li>
+        {% if item_count > 0 %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'cart:cart_detail' %}">Cart({{item_count}})</a>
+            
+          </li>
+        {% endif %}
         <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">Logout</a></li>
       {% else %}
         <li class="nav-item"><a href="{% url 'login' %}" class="nav-link">Login</a></li>
