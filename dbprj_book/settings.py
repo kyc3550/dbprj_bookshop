@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'shop',
     'accounts',
     'cart',
+    'order',
 
 ]
 
@@ -154,5 +155,12 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 DEFAULT_FILE_STORAGE = 'dbprj_book.s3media.MediaStorage'
 
+IAMPORT_KEY = MY_IAMPORT_KEY
+IAMPORT_SECRET = MY_IAMPORT_SECRET
+
 # reverse_lazy 함수를 사용해서 다른 뷰를 적용할 수 있다.
 LOGIN_REDIRECT_URL ='/' #로그인 후 홈 회면으로 가기위함
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR,'static')
+]

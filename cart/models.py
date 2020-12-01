@@ -28,5 +28,17 @@ class CartItem(models.Model):
 
     def __str__(self):
         return str(self.product)
+'''
+    def __iter__(self):
+        product_ids = self.cart.cart_id()
 
-    
+        products1 = Product.objects.filter(id__in=product_ids)
+
+        for product1 in products1:
+            self.cart[str(product_id)]['product'] = product
+
+        for item in self.cart.product():
+            item['price'] = Decimal(item['book_price'])
+            item['total_price'] = item['book_price'] * item['quantity']
+'''
+        

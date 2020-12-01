@@ -42,6 +42,7 @@ def cart_detail(request, total=0, counter=0, cart_item=None):
         for cart_item in cart_items:
             total += (cart_item.product.book_price * cart_item.quantity)
             counter += cart_item.quantity
+            
     except ObjectDoesNotExist:
         pass
 
