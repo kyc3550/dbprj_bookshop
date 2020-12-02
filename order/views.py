@@ -1,18 +1,19 @@
   
 from django.shortcuts import render, get_object_or_404
 from .models import *
-from cart.views import cart_detail
+from cart.views import cart_detail,cart_item_find
 from .forms import *
 
 def order_create(request):
     
-    cart = cart_detail(request)
+    cart = cart_item_find(request)
+    
     if request.method == 'POST':
         form = OrderCreateForm(request.POST)
         if form.is_valid():
             order = form.save()
             for cart_item in cart:
-                OrderItem.objects.create(order=order, product=cart_item['product'], price=cart_item['total'], quantity=cart_item['counter'])
+                OrderItem.objects.create(order=order, product=cart_item.product, price=cart_item.product.book_price, quantity=cart_item.quantity)
             
             return render(request, 'order/created.html', {'order':order})
     else:
@@ -34,13 +35,12 @@ class OrderCreateAjaxView(View):
         if not request.user.is_authenticated:
             return JsonResponse({"로그인을 해주세요":False}, status=403)
         
-        cart = cart_detail(request)
+        cart = cart_item_find(request)
         form = OrderCreateForm(request.POST)
         if form.is_valid():
             order = form.save()
             for cart_item in cart:
-                OrderItem.objects.create(order=order, product=cart_item['product'], price=cart_item['total'], quantity=cart_item['counter'])
-        
+                OrderItem.objects.create(order=order, product=cart_item.product, price=cart_item.product.book_price, quantity=cart_item.quantity)
             data = {
                 "order_id": order.id
             }

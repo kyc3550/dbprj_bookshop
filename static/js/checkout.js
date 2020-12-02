@@ -1,5 +1,5 @@
-$(function() {
-    var IMP=window.IMP;
+$(function () {
+    var IMP = window.IMP;
     IMP.init('imp83583999');
     $('.order-form').on('submit', function (e) {
         var amount = parseFloat($('.order-form input[name="amount"]').val().replace(',', ''));
@@ -10,6 +10,8 @@ $(function() {
             alert('주문 생성 실패\n다시 시도해주세요.');
             return false;
         }
+
+        // 결제 정보 생성
         var merchant_id = AjaxStoreTransaction(e, order_id, amount, type);
 
         // 결제 정보가 만들어졌으면 iamport로 실제 결제 시도
@@ -37,8 +39,8 @@ $(function() {
             });
         }
         return false;
-    })
-})
+    });
+});
 
 // 폼 데이터를 기준으로 주문 생성
 function AjaxCreateOrder(e) {
