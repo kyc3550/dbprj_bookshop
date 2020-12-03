@@ -2,20 +2,14 @@
 {% block title %}-  회원정보 수정{% endblock %}
 
 {% block content %}
-<h1>{{user.username}} Profile Update</h1>
-
-    {% if error_msg %}
-    <div class="alert alert-warning alert-dismissible" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    <strong>Error</strong> {{error_msg}}
-    </div>
-    {% endif %}
-
+<h1>{{user.address2.user_name}} Profile Update</h1>
     <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
-    {{ user_form.as_p }}
+    {{ user_change_form.as_p }}
     {{ card_profile_form.as_p }}
     {{ address_profile_form.as_p }}
     <input type="submit" value="Update" />
+    <a href="{% url 'delete' %}" class="btn btn-danger">회원탈퇴</a>
+    
     </form>
 </p>
 

@@ -9,6 +9,10 @@ class Order(models.Model):
     updated = models.DateTimeField(auto_now=True)
     paid = models.BooleanField(default=False)
 
+    card_num = models.CharField(max_length=20)
+    card_expirantion = models.DateField()
+    card_choice = models.CharField(max_length=10)
+
     post_code = models.CharField(max_length=20)
     base_address = models.CharField(max_length=250)
     detail_address = models.CharField(max_length=100)

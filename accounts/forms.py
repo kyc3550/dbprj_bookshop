@@ -1,7 +1,8 @@
 from django.contrib.auth.models import User
 from .models import Address2,Card
 from django import forms
-
+from django.contrib.auth.forms import UserChangeForm
+from django.contrib.auth import get_user_model
 class RegisterForm(forms.ModelForm):
     username = forms.CharField(label='회원번호(ID)',help_text=False)
     password = forms.CharField(label='비밀번호',widget=forms.PasswordInput)
@@ -42,3 +43,7 @@ class CardForm(forms.ModelForm):
         model = Card
         fields = ['card_num', 'card_expirantion', 'card_choice']    
 
+class CustomUserChangeForm(UserChangeForm):
+    class Meta:
+        model = get_user_model()
+        fields= ['username']
